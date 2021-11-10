@@ -1,0 +1,75 @@
+프로젝트 폴더를 생성하면 package.json 만들어야함
+1일차의 기반을 가져오기 위해서 1일차에 있는 package.json 복사해서 day02로 바꿔주기
+
+✔ package.json을 사용한 모듈 복원
+- npm install
+package.json 안에 들어있는 디펜던시들에 대한게 자동으로 다 깔림 → 환경 구축 완
+
+nodemon 설치 (시스템에 설치, 내컴퓨터)
+- 서버 코드가 변경할 때마다 서버를 자동으로 재시작하도록 하는 모듈
+[프로그램 코드 수정할때마다 다시 서버돌리고 빌드하는거 솔직히 많이 불편함 → 이 불편함을 없애주기 위해 ?
+자기가 알아서 껏다 켜주거나 빌드해줌]
+- npm i -g nodemon(-g : 글로벌 설치)
+
+템플릿 엔진  
+- MVC 모델에서 view를 구현하기 위한 템플릿 (V)
+
+EJS(Embedded JavaScript) 모듈 → 템플릿 엔진중의 하나 
+- 특정한 형식인 파일로부터 HTML 페이지를 생성하는 모듈
+- npm i ejs
+
+EJS 파일 형식의 특수코드 
+<% ~~~ code ~~~ %> : 자바스크립트 코드를 입력하는 영역
+<%=변수%> : 데이터를 출력
+<%-변수%> : ejs 파일 전체를 전달
+
+EJS 데이터를 사용자에게 전달 
+render() : 메소드의 매개변수에 전달하고자 하는 데이터를 입력 
+    - ejs.render(data);
+
+
+<%=i%> 를 <%=i> 로 한게 원인이었다니 충격이다;; 
+
+
+pug 
+- npm i pug
+- 과거 jade 템플릿 엔진
+
+
+Nunjecks
+http://mozilla.github.io/nunjucks/
+
+node.js 메일 보내기
+nodemailer 모듈
+- 메일서버를 통해 메일을 보낼 수 있도록 하는 모듈
+- npm i nodemailer
+
+nodemailer 메일설정
+
+createTransport({
+    service: '메일서버',
+    auth:{
+        user:'계정',
+        pass:'비밀번호'
+    },
+    host :'메일서버도메인',
+    port :'포트'
+});
+
+nodemailer 내용설정
+const 객체명 ={
+    form:'이름<메일주소>',
+    to:'이름<메일주소>',
+    subject:'제목',
+    text:'내용'
+    // html: 'html코드'
+}
+
+보안 수준이 낮은 앱의 액세스
+https://myaccount.google.com/lesssecureapps
+
+계정 액세스 사용을 허용
+https://accounts.google.com/DisplayUnlockCaptcha
+
+
+

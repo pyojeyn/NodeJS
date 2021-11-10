@@ -1,0 +1,19 @@
+html 
+    head 
+        title 사용자 정보 보기
+    body 
+        #userid 
+            h2 사용자 아이디 : #{userid}
+        hr
+        #name 
+            h2 사용자 이름 : #{name}
+            p=desc
+        hr            
+        .article 
+            a(href='https://daum.net',title='다음으로 이동') 다음으로 이동
+        hr
+        .for 
+            - for(let i=0; i<10; i++){
+                p 
+                    a(href='./#{i}') 책갈피 #{i}
+            -}    

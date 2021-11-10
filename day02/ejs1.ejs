@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS 템플릿 테스트</title>
+</head>
+<body>
+    <h2>EJS 템플릿 테스트</h2>
+        <% 
+            const userid='apple'; 
+            const name='김사과'; 
+        %>
+        <p>아이디 : <%=userid%>
+        </p>
+        <p>이름 : <%=name%>
+        </p>
+        <p>태어난 년도 :
+            <select>
+                <% 
+                    for(let i=1900; i<=2021; i++){ 
+                %>
+                    <option value="<%=i%>"><%=i%></option>
+                <% 
+                    } 
+                %>
+            </select>
+        </p>
+</body>
+
+</html>
