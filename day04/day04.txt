@@ -1,0 +1,16 @@
+mongodb 모듈
+- mongodb와 연결하고 이용하는 모듈
+- npm i mongodb
+
+mysql 모듈
+- mysql과 연결하기 위한 모듈
+- 커넥션 풀을 사용하여 연결
+
+커넥션 풀
+✔ 데이터베이스 연결 객체가 너무 많이 만들어지는 것을 막고 기존의 연결 객체를 재활용하게 만듬
+
+morgan 모듈
+- 로그를 관리하기 위한 별도와 라이브러리 모듈
+- npm i morgan
+https://www.npmjs.com/
+https://www.npmjs.com/package/morgan
