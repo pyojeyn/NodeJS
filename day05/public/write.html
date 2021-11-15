@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 업로드</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./moment.min.js"></script>
+    <script>
+        $(function(){
+            const curDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            $('#createDate').attr('value', curDate);
+            $('#photoInput').change(function(){
+                readURL(this);
+            });
+        });
+//미리보기?
+        function readURL(input){
+            if(input.files && input.files[0]){ //이미지가 있다면!(들어갔다면)
+                const reader = new FileReader();
+                reader.onload = function(e){  // 콜백
+                    $('#photoOutput').attr('src', e.target.result); //제인아 오타 장난하니...? targer가 웬말이니; 
+                }
+                reader.readAsDataURL(input.files[0]); //이게 먼저 순임
+            }
+        }
+        </script>
+
+</head>
+<body>
+    <h2>이미지 업로드</h2>
+    <form action="/write" method="post" enctype="multipart/form-data">
+        <p>현재 시간 : <input type="text" name="createDate" id="createDate" readonly></p> <!--사람들이 손으로 직접 적지 못하게 readonly-->
+        <p>제목 : <input type="text" name="title"></p>
+        <p>이미지 : <input type="file" name="photo" id="photoInput"></p>
+        <p><img src="" id="photoOutput" width="200"></p>
+        <p><input type="submit" value="확인"></p>
+    </form>
+</body>
+</html>

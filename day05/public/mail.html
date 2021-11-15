@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메일 보내기</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./moment.min.js"></script>
+    <script>
+        $(function(){
+            const curDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            $('#createDate').attr('value', curDate);
+            $('#photoInput').change(function(){
+                readURL(this);
+            });
+        });
+//미리보기?
+        function readURL(input){
+            if(input.files && input.files[0]){ //이미지가 있다면!(들어갔다면)
+                const reader = new FileReader();
+                reader.onload = function(e){  // 콜백
+                    $('#photoOutput').attr('src', e.target.result); //제인아 오타 장난하니...? targer가 웬말이니; 
+                }
+                reader.readAsDataURL(input.files[0]); //이게 먼저 순임
+            }
+        }
+        </script>
+</head>
+<body>
+    <h2>메일보내기</h2>
+    <form action="/mail" method="post"  enctype="multipart/form-data">
+        <p>현재 시간 : <input type="text" name="createDate" id="createDate" readonly></p> 
+        <p>보내는 아이디 : <input type="text" name="sendid"></p>
+        <p>보내는 이메일 : <input type="text" name="usermail"></p>
+        <p>받는 아이디 : <input type="text" name="toid"></p>
+        <p>받는 이메일 : <input type="text" name="tomail"></p>
+        <p>제목 : <input type="text" name="title"></p>
+        <p>내용</p>
+        <p><textarea name="content"  cols="60" rows="5"></textarea></p>
+        <p>이미지 : <input type="file" name="photo" id="photoInput"></p>
+        <p><img src="" id="photoOutput" width="200"></p>
+        <p><input type="submit" value="보내기"></p>
+    </form>
+</body>
+</html>
