@@ -62,7 +62,7 @@ app.get('/logout',(req,res) =>{
     req.session.destroy( () =>{
         console.log('세션이 삭제되었습니다.');
     });
-    res.redirect('./login');
+    res.redirect('/login');
 })
 
 app.listen(3000,() =>{
